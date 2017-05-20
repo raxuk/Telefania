@@ -50,18 +50,11 @@ public class Administrador implements Serializable {
 		}
 	}
 	
-//	public void borrarCliente(Cliente cliente) {
-//		listaClientes.remove(cliente.getNIF());
-//	}
 	
 	public void borrarCliente(String nif) {
 		listaClientes.remove(nif);
 	}
 
-//	public void cambiarTarifaCliente(Cliente cliente, Tarifa tarifa) {
-//		listaClientes.get(cliente.getNIF()).setTarifa(tarifa);
-//	}
-	
 	public void cambiarTarifaCliente(String nif, Tarifa tarifa) {
 		listaClientes.get(nif).setTarifa(tarifa);
 	}

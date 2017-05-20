@@ -9,11 +9,11 @@ import utils.Mensajes;
 public class GuardarDatos {
 	public static void guardarDatos(Administrador admin) {
 		try {
-			FileOutputStream fos = new FileOutputStream("admin.bin");
+			FileOutputStream fos = new FileOutputStream("telefania.bin");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(admin);
 			oos.close();
-			Mensajes.SAVE.getDescripcion();
+//			Mensajes.SAVE.getDescripcion();
 		} catch (IOException e) {
 			Mensajes.ERRORSAVE.getDescripcion();
 		}

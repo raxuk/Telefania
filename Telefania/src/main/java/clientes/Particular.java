@@ -8,7 +8,7 @@ public class Particular extends Cliente {
 	 * 
 	 */
 	private static final long serialVersionUID = 2387273860053535401L;
-	//atributos
+	// atributos
 	private String apellidos;
 
 	// constructor
@@ -17,19 +17,20 @@ public class Particular extends Cliente {
 		this.apellidos = "";
 	}
 
-	public Particular(String nombre, String NIF, Direccion direccion, int codPostal, String email,
-			Tarifa tarifa) {
+	public Particular(String nombre, String NIF, Direccion direccion, String email, Tarifa tarifa) {
 		super(nombre, NIF, direccion, email, tarifa);
 		this.apellidos = "";
 	}
+
 	public String getApellidos() {
 		return apellidos;
 	}
 
-	public void setApellidos(String apellidos) {
-		this.apellidos=apellidos;
+	public Particular setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+		return this;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

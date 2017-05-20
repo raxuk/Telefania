@@ -31,6 +31,6 @@ public class TarifaPorHoras extends Tarifa {
 
 	@Override
 	public String toString() {
-		return tarifa.toString() + ", descuento de: " + inicioLlamada + "-" + finalLlamada;
+		return tarifa.toString() + "\ndescuento de: " + inicioLlamada + "-" + finalLlamada;
 	}
 }

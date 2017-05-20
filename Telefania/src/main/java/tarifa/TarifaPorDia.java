@@ -29,6 +29,6 @@ public class TarifaPorDia extends Tarifa {
 	
 	@Override
 	public String toString(){
-		return tarifa.toString() + ", " + dia.name() + " gratis";
+		return tarifa.toString() + "\n" + dia.name() + " gratis";
 	}
 }

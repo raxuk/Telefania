@@ -9,12 +9,12 @@ public class RecuperarDatos {
 	public static Administrador recuperarDatos() {
 		Administrador admin = Administrador.getAdministradorInstancia();
 		try {
-			FileInputStream fis = new FileInputStream("admin.bin");
+			FileInputStream fis = new FileInputStream("telefania.bin");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			admin = (Administrador) ois.readObject();
 			ois.close();
 		} catch (Exception e) {
-			Mensajes.ERRORSAVENOTFOUND.getDescripcion();
+//			Mensajes.ERRORSAVENOTFOUND.getDescripcion();
 		}
 		return admin;
 	}
