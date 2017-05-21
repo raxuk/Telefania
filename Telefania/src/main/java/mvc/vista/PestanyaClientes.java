@@ -44,12 +44,14 @@ public class PestanyaClientes extends JPanel { // NUEVO
 		tablaClientes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
+				if (tablaClientes.getModel().getRowCount() == 1)
+					modelo.mostrarInfoCliente(0);
 				if (e.getValueIsAdjusting() != true) {
 					if (actualizar) {
 						int fila = tablaClientes.convertRowIndexToModel(tablaClientes.getSelectedRow());
 						modelo.mostrarInfoCliente(fila);
 					}
-					actualizar=true;
+					actualizar = true;
 				}
 			}
 		});

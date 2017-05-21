@@ -10,8 +10,9 @@ public enum Mensajes {
 	NIF("Introduce el NIF del cliente: \n"),
 	CLIENTECREADO("Cliente añadido con existo."),
 	CLIENTEBORRADO("Cliente borrado de la base de datos"),
+	CODIGOPOSTALINCORRECTO("Código postal introducido incorrecto."),
 //	ERRORNIFNOTFOUND("NIF de cliente no encontrado"), 
-	ERRORNIFEXISTENTE("ERROR: NIF ya introducido. Cliente nuevo no añadido."),
+	ERRORNIFEXISTENTE("NIF ya existente."),
 	//TARIFA
 	TARIFACAMBIADA("Tarifa del cliente cambiada con éxito"),
 	//FACTURA

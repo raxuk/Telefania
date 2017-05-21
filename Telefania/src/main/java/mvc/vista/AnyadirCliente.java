@@ -21,6 +21,7 @@ import javax.swing.border.Border;
 
 import mvc.controlador.Controlador;
 import mvc.modelo.ImplementacionModelo;
+import utils.Mensajes;
 
 public class AnyadirCliente extends JPanel {
 	/**
@@ -168,9 +169,21 @@ public class AnyadirCliente extends JPanel {
 		if (modelo.existeCliente(nif.getText())) {
 			todoCorrecto = false;
 			nif.setBorder(BorderFactory.createLineBorder(Color.red));
-			nif.setText("NIF de cliente ya existente");
+			nif.setText("");
+			Mensajes.ERRORNIFEXISTENTE.getDescripcion();
 		}
-
+		
+		if (todoCorrecto && !codigoPostal.getText().isEmpty()) {
+			try {
+				Integer.parseInt(codigoPostal.getText());
+			} catch (NumberFormatException e) {
+				todoCorrecto = false;
+				codigoPostal.setBorder(BorderFactory.createLineBorder(Color.red));
+				codigoPostal.setText("");
+				Mensajes.CODIGOPOSTALINCORRECTO.getDescripcion();
+			}
+		}
+		
 		if (todoCorrecto) {
 			for (Component componente : getComponents())
 				if (componente instanceof JTextField) {
