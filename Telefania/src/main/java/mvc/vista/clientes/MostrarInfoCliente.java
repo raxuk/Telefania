@@ -1,4 +1,4 @@
-package mvc.vista;
+package mvc.vista.clientes;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -27,9 +27,11 @@ public class MostrarInfoCliente extends JPanel {
 	private JTextArea direccion;
 	private JTextArea email;
 	private JTextArea tarifa;
+	private JTextArea fechaAlta;
 	private JLabel apellidosLabel;
 
 	public MostrarInfoCliente(ImplementacionModelo modelo, Controlador controlador) {
+		super();
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
@@ -52,6 +54,8 @@ public class MostrarInfoCliente extends JPanel {
 		JLabel emailLabel = new JLabel("E-mail: ");
 		tarifa = new JTextArea("", 3, 16);
 		JLabel tarifaLabel = new JLabel("Tarifa: ");
+		fechaAlta = new JTextArea("", 1, 16);
+		JLabel fechaAltaLabel = new JLabel("Fecha alta cliente:");
 
 		nombre.setEditable(false);
 		apellidos.setEditable(false);
@@ -59,6 +63,7 @@ public class MostrarInfoCliente extends JPanel {
 		direccion.setEditable(false);
 		email.setEditable(false);
 		tarifa.setEditable(false);
+		fechaAlta.setEditable(false);
 
 		// JPanel
 		JPanel cambioTarifa = new JPanel();
@@ -115,6 +120,7 @@ public class MostrarInfoCliente extends JPanel {
 		add(nifLabel, c);
 		add(direccionLabel, c);
 		add(emailLabel, c);
+		add(fechaAltaLabel, c);
 		add(tarifaLabel, c);
 		add(cambiarTarifa, c);
 
@@ -131,6 +137,7 @@ public class MostrarInfoCliente extends JPanel {
 		add(nif, c);
 		add(direccion, c);
 		add(email, c);
+		add(fechaAlta, c);
 		add(tarifa, c);
 		add(borrar, c);
 		add(cambioTarifa, c);
@@ -176,5 +183,8 @@ public class MostrarInfoCliente extends JPanel {
 	public void setTarifa(String tarifa) {
 		this.tarifa.setText(tarifa);
 	}
-
+	
+	public void setFechaAlta(String fechaAlta) {
+		this.fechaAlta.setText(fechaAlta);
+	}
 }

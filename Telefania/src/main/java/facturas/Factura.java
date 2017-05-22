@@ -36,27 +36,18 @@ public class Factura implements GetFecha, ToString,Serializable {
 		this.periodoTiempo = periodo;
 		return this;
 	}
-
-	//get
 	
 	public void setImporte(Double importe) {
 		this.importe = importe;
 	}
 	
+	//get
 	public CodigoUnico getCodigoFactura() {
 		return this.codigoFactura;
 	}
 
 	public Tarifa getTarifa() {
 		return this.tarifa;
-	}
-
-	public LocalDateTime getFechaInicioPeriodo() {
-		return this.periodoTiempo.getFechaInicio();
-	}
-
-	public LocalDateTime getFechaFinalPeriodo() {
-		return this.periodoTiempo.getFechaFinal();
 	}
 
 	public PeriodoTiempo getPeriodoTiempo() {
@@ -74,18 +65,19 @@ public class Factura implements GetFecha, ToString,Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("\n =============== ");
-		builder.append("\n Código de factura: ");
+		builder.append("=============== ");
 		builder.append(this.codigoFactura);
-		builder.append("\n Fecha de emisión de la factura: ");
-		builder.append(this.fechaEmisionFactura.toString());
-		builder.append("\n Periodo de facturación: ");
-		builder.append(this.periodoTiempo.getFechaInicio());
-		builder.append(" - ");
-		builder.append(this.periodoTiempo.getFechaFinal());
-		builder.append("\n Tarifa básica: ");
+		builder.append("Fecha de emisión de la factura: ");
+		builder.append(fechaEmisionFactura.getDayOfMonth());
+		builder.append("/");
+		builder.append(fechaEmisionFactura.getMonthValue());
+		builder.append("/");
+		builder.append(fechaEmisionFactura.getYear());
+		builder.append("\n\nPeriodo de facturación: ");
+		builder.append(this.periodoTiempo.toString());
+		builder.append("\n\nTarifa: ");
 		builder.append(this.tarifa);
-		builder.append("\n Importe: ");
+		builder.append("\n\nImporte: ");
 		builder.append(this.importe);
 
 		return builder.toString();

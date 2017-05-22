@@ -5,11 +5,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import llamadas.Llamada;
+import utils.ToString;
 
-public class PeriodoTiempo implements Serializable {
+public class PeriodoTiempo implements Serializable, ToString {
 	/**
 	 * 
 	 */
@@ -61,9 +61,10 @@ public class PeriodoTiempo implements Serializable {
 	}
 
 	// main
-	public ArrayList<Llamada> listaLlamadasEnPeriodo(Collection<Llamada> collection) {
+	public ArrayList<Llamada> listaLlamadasEnPeriodo(ArrayList<Llamada> listaLlamadas) {
 		ArrayList<Llamada> listaLlamadaTemp = new ArrayList<Llamada>();
-		for (Llamada llamada : collection) {			
+		if(!listaLlamadas.isEmpty())
+		for (Llamada llamada : listaLlamadas) {			
 			if (llamada.getFecha().isAfter(this.fechaPeriodoInicio.minusDays(1))
 					&& llamada.getFecha().isBefore(this.fechaPeriodoFinal.plusDays(1)))
 				listaLlamadaTemp.add(llamada);
@@ -71,4 +72,22 @@ public class PeriodoTiempo implements Serializable {
 		return listaLlamadaTemp;
 	}
 
+	//
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("\nFecha inicio: ");
+		builder.append(fechaPeriodoInicio.getDayOfMonth());
+		builder.append("/");
+		builder.append(fechaPeriodoInicio.getMonthValue());
+		builder.append("/");
+		builder.append(fechaPeriodoInicio.getYear());
+		builder.append("\nFecha final: ");
+		builder.append(fechaPeriodoFinal.getDayOfMonth());
+		builder.append("/");
+		builder.append(fechaPeriodoFinal.getMonthValue());
+		builder.append("/");
+		builder.append(fechaPeriodoFinal.getYear());
+		return builder.toString();
+	}
 }

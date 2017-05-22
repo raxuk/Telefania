@@ -1,15 +1,27 @@
-package mvc.vista;
+package mvc.vista.clientes;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 
 import mvc.controlador.Controlador;
 import mvc.modelo.ImplementacionModelo;
+import utils.Mensajes;
 
 public class PestanyaClientes extends JPanel { // NUEVO
 
@@ -25,22 +37,42 @@ public class PestanyaClientes extends JPanel { // NUEVO
 	private boolean actualizar = true;
 
 	public PestanyaClientes(ImplementacionModelo modelo, Controlador controlador) {
+		super();
 		this.modelo = modelo;
 		anyadirCliente = new AnyadirCliente(modelo, controlador);
-		JPanel clientesLista = new JPanel();
 		clienteMostrar = new MostrarInfoCliente(modelo, controlador);
 
 		// ClienteCrear //TODO gridbadlayout
-		add(anyadirCliente);
+		JPanel jpAnyadirCliente = new JPanel();
+		jpAnyadirCliente.add(anyadirCliente);
+		add(jpAnyadirCliente);
 
 		// ClienteLista
 		tablaClientes = new JTable();
 		actualizarTablaClientes();
 		JScrollPane scroll = new JScrollPane(tablaClientes);
-		clientesLista.add(scroll);
 		add(scroll);
 
 		// ClienteMostrar
+		JPanel jpInfoCliente = new JPanel(new BorderLayout());
+		jpInfoCliente.add(clienteMostrar, BorderLayout.CENTER);
+		
+		JLabel jlBuscarCliente = new JLabel("<html>Buscar cliente, introduce el NIF:</html>");
+		JTextField nifBuscar = new JTextField(10);
+		Border borderDefault = nifBuscar.getBorder();
+
+		JButton buscar = new JButton("Buscar");
+		JPanel buscarCliente = new JPanel(new FlowLayout());
+		buscarCliente.add(jlBuscarCliente);
+		buscarCliente.add(nifBuscar);
+		buscarCliente.add(buscar);
+		
+		jpInfoCliente.add(buscarCliente, BorderLayout.NORTH);
+		
+		add(jpInfoCliente);
+
+		
+		//action
 		tablaClientes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
@@ -55,8 +87,24 @@ public class PestanyaClientes extends JPanel { // NUEVO
 				}
 			}
 		});
-		add(clienteMostrar);
+		
+		buscar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (!modelo.existeCliente(nifBuscar.getText())) {
+					nifBuscar.setBorder(BorderFactory.createLineBorder(Color.red));
+					nifBuscar.setText("");
+					Mensajes.ERRORNIFNOTFOUND.getDescripcion();
 
+				} else {
+					nifBuscar.setBorder(borderDefault);
+					modelo.mostrarInfoClienteBusqueda(nifBuscar.getText());
+				}
+			}
+
+		});
+		
+		
 	}
 
 	// metodos

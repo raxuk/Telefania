@@ -15,5 +15,8 @@ public interface InformaVista {
 	void setInfoClienteDireccion(String direccion);
 	void setInfoClienteEmail(String email);
 	void setInfoClienteTarifa(String tarifa);
+	void setInfoClienteFechaAlta(String fechaAlta);
+	
+	void cambiarPestanya(int i);
 
 }

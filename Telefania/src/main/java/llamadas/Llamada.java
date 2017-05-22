@@ -44,13 +44,18 @@ public class Llamada implements GetFecha, ToString, Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("\n =============== ");
-		builder.append("\n Número de telefono llamado: ");
+		builder.append("=============== ");
+		builder.append("\nNúmero de telefono llamado: ");
 		builder.append(this.numeroTelefonoLlamado);
-		builder.append("\n Fecha de la llamada: ");
-		builder.append(this.fechaLlamada.toString());
-		builder.append("\n Duración de la llamada: ");
+		builder.append("\nFecha de la llamada: ");
+		builder.append(fechaLlamada.getDayOfMonth());
+		builder.append("/");
+		builder.append(fechaLlamada.getMonthValue());
+		builder.append("/");
+		builder.append(fechaLlamada.getYear());
+		builder.append("\nDuración de la llamada: ");
 		builder.append(this.duracionLlamadaSegundos);
+		builder.append(" seg");
 
 		return builder.toString();
 	}

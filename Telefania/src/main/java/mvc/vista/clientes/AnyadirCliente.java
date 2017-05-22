@@ -1,4 +1,4 @@
-package mvc.vista;
+package mvc.vista.clientes;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -46,17 +46,18 @@ public class AnyadirCliente extends JPanel {
 	private ImplementacionModelo modelo;
 
 	public AnyadirCliente(ImplementacionModelo modelo, Controlador controlador) {
+		super();
 		this.controlador = controlador;
 		this.modelo = modelo;
 		// Principal
 		setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 0;
-		c.gridy = GridBagConstraints.RELATIVE;
-		c.gridwidth = 1;
-		c.gridheight = 1;
-		c.insets = new Insets(2, 2, 2, 2);
-		c.anchor = GridBagConstraints.EAST;
+		GridBagConstraints cons = new GridBagConstraints();
+		cons.gridx = 0;
+		cons.gridy = GridBagConstraints.RELATIVE;
+		cons.gridwidth = 1;
+		cons.gridheight = 1;
+		cons.insets = new Insets(2, 2, 2, 2);
+		cons.anchor = GridBagConstraints.EAST;
 
 		// Botones
 		JButton anyadir = new JButton("Añadir");
@@ -131,35 +132,35 @@ public class AnyadirCliente extends JPanel {
 		});
 
 		// Anyadir elementos al panel principal
-		add(particular, c);
-		add(nombreLabel, c);
-		add(apellidosLabel, c);
-		add(nifLabel, c);
-		add(provinciaLabel, c);
-		add(poblacionLabel, c);
-		add(codigoPostalLabel, c);
-		add(emailLabel, c);
-		add(tarifaLabel, c);
-		add(limpiar, c);
+		add(particular, cons);
+		add(nombreLabel, cons);
+		add(apellidosLabel, cons);
+		add(nifLabel, cons);
+		add(provinciaLabel, cons);
+		add(poblacionLabel, cons);
+		add(codigoPostalLabel, cons);
+		add(emailLabel, cons);
+		add(tarifaLabel, cons);
+		add(limpiar, cons);
 
-		c.gridx = 1;
-		c.gridy = 0;
-		c.weightx = 1.0;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.CENTER;
+		cons.gridx = 1;
+		cons.gridy = 0;
+		cons.weightx = 1.0;
+		cons.fill = GridBagConstraints.HORIZONTAL;
+		cons.anchor = GridBagConstraints.CENTER;
 
-		add(empresa, c);
-		c.gridx = 1;
-		c.gridy = GridBagConstraints.RELATIVE;
-		add(nombre, c);
-		add(apellidos, c);
-		add(nif, c);
-		add(provincia, c);
-		add(poblacion, c);
-		add(codigoPostal, c);
-		add(email, c);
-		add(eleccionTarifa, c);
-		add(anyadir, c);
+		add(empresa, cons);
+		cons.gridx = 1;
+		cons.gridy = GridBagConstraints.RELATIVE;
+		add(nombre, cons);
+		add(apellidos, cons);
+		add(nif, cons);
+		add(provincia, cons);
+		add(poblacion, cons);
+		add(codigoPostal, cons);
+		add(email, cons);
+		add(eleccionTarifa, cons);
+		add(anyadir, cons);
 	}
 
 	// Action
@@ -172,7 +173,7 @@ public class AnyadirCliente extends JPanel {
 			nif.setText("");
 			Mensajes.ERRORNIFEXISTENTE.getDescripcion();
 		}
-		
+
 		if (todoCorrecto && !codigoPostal.getText().isEmpty()) {
 			try {
 				Integer.parseInt(codigoPostal.getText());
@@ -183,7 +184,7 @@ public class AnyadirCliente extends JPanel {
 				Mensajes.CODIGOPOSTALINCORRECTO.getDescripcion();
 			}
 		}
-		
+
 		if (todoCorrecto) {
 			for (Component componente : getComponents())
 				if (componente instanceof JTextField) {

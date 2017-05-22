@@ -44,7 +44,7 @@ public class CodigoUnico implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("\n Código único de la factura: ");
+		builder.append("\nCódigo único de la factura: ");
 		builder.append(this.getIdentificador());
 		builder.append("-");
 		builder.append(this.getSerie());

@@ -41,34 +41,36 @@ public abstract class Cliente implements GetFecha, ToString, Serializable {
 		this.direccion = direccion;
 		this.email = email;
 		this.tarifa = tarifa;
+		this.fechaAlta = LocalDateTime.now();
+		this.listaFacturas = new TreeMap<Integer, Factura>();
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public String getNIF() {
-		return NIF;
+		return this.NIF;
 	}
 
 	public Direccion getDireccion() {
-		return direccion;
+		return this.direccion;
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public Tarifa getTarifa() {
-		return tarifa;
+		return this.tarifa;
 	}
 
 	public TreeMap<Integer, Factura> getListaFacturas() {
-		return listaFacturas;
+		return this.listaFacturas;
 	}
-
+	
 	public LocalDateTime getFecha() {
-		return fechaAlta;
+		return this.fechaAlta;
 	}
 
 	public void setTarifa(Tarifa tarifaNueva) {

@@ -7,15 +7,17 @@ import javax.swing.SwingUtilities;
 
 import mvc.controlador.Controlador;
 import mvc.modelo.ImplementacionModelo;
-import mvc.vista.PestanyaClientes;
-import mvc.vista.PestanyaFacturas;
-import mvc.vista.PestanyaLlamadas;
+import mvc.vista.barraMenu.BarraMenu;
+import mvc.vista.clientes.PestanyaClientes;
+import mvc.vista.facturas.PestanyaFacturas;
+import mvc.vista.llamadas.PestanyaLlamadas;
 
 public class ImplementacionVista implements InterrogaVista, InformaVista {
 	private PestanyaClientes clientesPestanya;
-	private PestanyaFacturas facturasPestanya = new PestanyaFacturas();
-	private PestanyaLlamadas llamadasPestanya = new PestanyaLlamadas();
+	private PestanyaFacturas facturasPestanya;
+	private PestanyaLlamadas llamadasPestanya;
 	private JFrame ventana = new JFrame("Telefania");
+	private JTabbedPane pestanyas;
 	//
 	private Controlador controlador;
 	private ImplementacionModelo modelo;
@@ -32,6 +34,14 @@ public class ImplementacionVista implements InterrogaVista, InformaVista {
 		this.clientesPestanya = clientePestanya;
 	}
 
+	public void setFacturasPestanya(PestanyaFacturas facturasPestanya) {
+		this.facturasPestanya = facturasPestanya;
+	}
+
+	public void setLlamadasPestanya(PestanyaLlamadas llamadasPestanya) {
+		this.llamadasPestanya = llamadasPestanya;
+	}
+
 	public void creaGUI() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -42,13 +52,14 @@ public class ImplementacionVista implements InterrogaVista, InformaVista {
 	}
 
 	public void GUI() {
-		JTabbedPane pestanyas = new JTabbedPane();
+		pestanyas = new JTabbedPane();
 		pestanyas.addTab("Clientes", clientesPestanya);
 		clientesPestanya.setLayout(new BoxLayout(clientesPestanya, BoxLayout.X_AXIS));
 
 		pestanyas.addTab("Facturas", facturasPestanya);
 		pestanyas.addTab("Llamadas", llamadasPestanya);
 		//
+		ventana.setJMenuBar(new BarraMenu(modelo, controlador));
 		ventana.getContentPane().add(pestanyas);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.pack();
@@ -76,7 +87,7 @@ public class ImplementacionVista implements InterrogaVista, InformaVista {
 	public void actualizaClienteBorrado() {
 		clientesPestanya.actualizaClienteBorrado();
 	}
-	
+
 	@Override
 	public void actualizarFalse() {
 		clientesPestanya.actualizarFalse();
@@ -157,6 +168,16 @@ public class ImplementacionVista implements InterrogaVista, InformaVista {
 	@Override
 	public void setInfoClienteTarifa(String tarifa) {
 		clientesPestanya.getClienteMostrar().setTarifa(tarifa);
+	}
+
+	@Override
+	public void setInfoClienteFechaAlta(String fechaAlta) {
+		clientesPestanya.getClienteMostrar().setFechaAlta(fechaAlta);
+	}
+
+	@Override
+	public void cambiarPestanya(int i) {
+		pestanyas.setSelectedIndex(i);
 	}
 
 }

@@ -10,4 +10,8 @@ public interface CambioModelo {
 	void cambiarTarifa(String nif, Tarifa tarifa);
 
 	void borrarCliente(String nif);
+
+	String emitirFactura(int mes, int año, String nif);
+
+	String altaLlamada(String nif, String tlf, int dur);
 }

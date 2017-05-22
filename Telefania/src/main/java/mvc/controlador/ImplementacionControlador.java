@@ -83,4 +83,13 @@ public class ImplementacionControlador implements Controlador {
 		modelo.borrarCliente(nif);
 	}
 
+	@Override
+	public String emitirFactura(int mes, int año, String nif) {
+		return modelo.emitirFactura(mes,año, nif);
+	}
+
+	@Override
+	public String altaLlamada(String nif, String tlf, int dur) {
+		return modelo.altaLlamada(nif, tlf, dur);
+	}
 }

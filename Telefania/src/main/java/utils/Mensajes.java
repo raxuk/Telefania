@@ -11,7 +11,7 @@ public enum Mensajes {
 	CLIENTECREADO("Cliente añadido con existo."),
 	CLIENTEBORRADO("Cliente borrado de la base de datos"),
 	CODIGOPOSTALINCORRECTO("Código postal introducido incorrecto."),
-//	ERRORNIFNOTFOUND("NIF de cliente no encontrado"), 
+	ERRORNIFNOTFOUND("NIF de cliente no encontrado"), 
 	ERRORNIFEXISTENTE("NIF ya existente."),
 	//TARIFA
 	TARIFACAMBIADA("Tarifa del cliente cambiada con éxito"),
