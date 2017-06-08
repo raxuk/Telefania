@@ -37,6 +37,24 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	public void guardarDatos() {
 		GuardarDatos.guardarDatos(admin);
 	}
+	
+	public void nuevosDatos() {
+		admin.borrarDatos();
+		vista.actualizaTablaClientes();
+		vista.actualizaVentana();
+		guardarDatos();
+	}
+
+	public void cargarDatosFichero() {
+		admin = RecuperarDatos.cargarDatos();
+		vista.actualizaTablaClientes();
+		vista.actualizaVentana();
+		guardarDatos();
+	}
+
+	public void guardarDatosFichero() {
+		GuardarDatos.guardarArchivo(admin);
+	}
 
 	@Override
 	public boolean existeCliente(String nif) {
@@ -217,17 +235,17 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	}
 
 	@Override
-	public ArrayList<GetFecha> genClientes(LocalDateTime fechaInicio,LocalDateTime fechaFinal) {
+	public ArrayList<GetFecha> genClientes(LocalDateTime fechaInicio, LocalDateTime fechaFinal) {
 		return admin.genClientes(admin, fechaInicio, fechaFinal);
 	}
 
 	@Override
-	public ArrayList<GetFecha> genFacturas(String nif, LocalDateTime fechaInicio,LocalDateTime fechaFinal) {
+	public ArrayList<GetFecha> genFacturas(String nif, LocalDateTime fechaInicio, LocalDateTime fechaFinal) {
 		return admin.genFacturas(admin, nif, fechaInicio, fechaFinal);
 	}
 
 	@Override
-	public ArrayList<GetFecha> genLlamadas(String nif, LocalDateTime fechaInicio,LocalDateTime fechaFinal) {
+	public ArrayList<GetFecha> genLlamadas(String nif, LocalDateTime fechaInicio, LocalDateTime fechaFinal) {
 		return admin.genLlamadas(admin, nif, fechaInicio, fechaFinal);
 	}
 

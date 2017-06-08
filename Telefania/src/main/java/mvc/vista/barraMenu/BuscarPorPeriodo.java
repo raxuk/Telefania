@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -40,11 +41,15 @@ public class BuscarPorPeriodo extends JFrame {
 	private JTextField nif;
 	private ArrayList<GetFecha> lista;
 	private String[] filas = new String[3];
-	private JPanel panel;
+	private JPanel panelPrincipal;
+	private JPanel panelSpinner;
+	private JPanel panelLista;
 
 	public BuscarPorPeriodo(int tipoBusqueda, ImplementacionModelo modelo) {
 		this.modelo = modelo;
-		panel = new JPanel(new BorderLayout());
+		panelPrincipal = new JPanel(new BorderLayout());
+		panelSpinner = new JPanel(new BorderLayout());
+		panelLista = new JPanel(new BorderLayout());
 
 		Date hoy = new Date();
 		JSpinner spinnerFechaInicio = new JSpinner(new SpinnerDateModel(hoy, null, hoy, Calendar.DATE));
@@ -99,13 +104,13 @@ public class BuscarPorPeriodo extends JFrame {
 		}
 		if (tipoBusqueda == 1) {
 			setTitle("Busqueda facturas por fechas");
-			panel.add(panelNif, BorderLayout.NORTH);
+			panelSpinner.add(panelNif, BorderLayout.NORTH);
 			filas[0] = "Código Factura";
 			filas[1] = "Importe";
 		}
 		if (tipoBusqueda == 2) {
 			setTitle("Busqueda llamadas por fechas");
-			panel.add(panelNif, BorderLayout.NORTH);
+			panelSpinner.add(panelNif, BorderLayout.NORTH);
 			filas[0] = "Número de telefono";
 			filas[1] = "Duración";
 		}
@@ -116,9 +121,12 @@ public class BuscarPorPeriodo extends JFrame {
 		spinnerPanel.add(spinnerFechaFinal);
 		spinnerPanel.add(buscar);
 
-		panel.add(spinnerPanel,BorderLayout.CENTER);
-
-		getContentPane().add(panel);
+		panelSpinner.add(spinnerPanel,BorderLayout.CENTER);
+		
+		panelPrincipal.add(panelSpinner, BorderLayout.NORTH);
+		panelPrincipal.add(panelLista, BorderLayout.CENTER);
+		
+		getContentPane().add(panelPrincipal);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		pack();
 		setLocationRelativeTo(null);
@@ -141,7 +149,7 @@ public class BuscarPorPeriodo extends JFrame {
 		JTable tableLista = new JTable();
 		filas[2] = "Fecha";
 						
-		DefaultTableModel modeloTablaClientes = new DefaultTableModel(new Object[] { filas[0],filas[1],filas[2] }, 0);
+		DefaultTableModel modeloTablaClientes = new DefaultTableModel(new Object[] { filas[0].toString(),filas[1].toString(),filas[2].toString() }, 0);
 		for (GetFecha coso : lista) {
 			if(coso instanceof Cliente) 
 			modeloTablaClientes.addRow(new Object[] {((Cliente)coso).getNIF(),((Cliente)coso).getNombre(),((Cliente)coso).getFecha()});
@@ -156,9 +164,8 @@ public class BuscarPorPeriodo extends JFrame {
 		tableLista.setAutoCreateRowSorter(true);
 		tableLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		JPanel jpLista = new JPanel();
-		jpLista.add(tableLista);
-		add(jpLista,BorderLayout.SOUTH);
+		JScrollPane scroll = new JScrollPane(tableLista);
+		panelLista.add(scroll, BorderLayout.CENTER);
 		pack();
 	}
 }

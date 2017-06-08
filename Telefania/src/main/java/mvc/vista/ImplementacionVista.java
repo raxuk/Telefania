@@ -54,7 +54,7 @@ public class ImplementacionVista implements InterrogaVista, InformaVista {
 		pestanyas = new JTabbedPane();
 		pestanyas.addTab("Clientes", clientesPestanya);
 		pestanyas.addTab("Facturas", facturasPestanya);
-		pestanyas.addTab("Llamadas", llamadasPestanya);
+		pestanyas.addTab("Llamadas", llamadasPestanya);	
 		//
 		ventana.setJMenuBar(new BarraMenu(modelo, controlador));
 		ventana.getContentPane().add(pestanyas);

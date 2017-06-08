@@ -170,6 +170,11 @@ public class Administrador implements Serializable {
 	}
 
 	//
+	public void borrarDatos() {
+		this.listaClientes = new TreeMap<String, Cliente>();
+		this.listaLlamadas = new TreeMap<String, ArrayList<Llamada>>();
+	}
+	//
 
 	public String fecha(LocalDateTime dateTime) {
 		StringBuilder builder = new StringBuilder();
