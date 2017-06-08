@@ -137,7 +137,7 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 
 	@Override
 	public AbstractTableModel getFacturasCliente(String nif) {
-		DefaultTableModel modeloTablaFacturas = new DefaultTableModel(new Object[] { "Código Fact", "Importe" }, 0);
+		DefaultTableModel modeloTablaFacturas = new DefaultTableModel(new Object[] { "Código Fact", "Importe (€)" }, 0);
 		for (Entry<Integer, Factura> factura : admin.getListaClientes().get(nif).getListaFacturas().entrySet()) {
 			String codigoFact = nif + "-" + factura.getKey().toString();
 			String importe = String.valueOf(factura.getValue().getImporte());
@@ -169,7 +169,7 @@ public class ImplementacionModelo implements CambioModelo, InterrogaModelo {
 	@Override
 	public AbstractTableModel getLlamadasCliente(String nif) {
 		DefaultTableModel modeloTablaFacturas = new DefaultTableModel(
-				new Object[] { "Núm. Telf.", "Duración llamada", "Fecha llamada" }, 0);
+				new Object[] { "Núm. Telf.", "Duración llamada (seg)", "Fecha llamada" }, 0);
 		for (Llamada llamada : admin.getListaLlamadas().get(nif)) {
 			String numTel = llamada.getNumeroTelefonoLlamado();
 			String duracion = String.valueOf(llamada.getduracionLlamadaSegundos());

@@ -4,10 +4,16 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import excepciones.NifNotFoundException;
 import main.Administrador;
+import menu.EjecutarOpcion;
 import utils.GetFecha;
 
-public class GenLlamada {
+public class GenLlamada implements EjecutarOpcion {
 
+	@Override
+	public void ejecuta(Administrador admin) {
+		//DEPLETED
+	}
+	
 	public ArrayList<GetFecha> ejecuta(Administrador admin, String nif, LocalDateTime fechaInicio, LocalDateTime fechaFinal) {
 		if (!admin.getListaClientes().containsKey(nif))
 			throw new NifNotFoundException();

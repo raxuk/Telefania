@@ -1,12 +1,6 @@
 package utils;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.Timer;
 
 public class Output {
 	public static void outPut(String cadena) {

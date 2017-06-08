@@ -79,6 +79,7 @@ public class Factura implements GetFecha, ToString,Serializable {
 		builder.append(this.tarifa);
 		builder.append("\n\nImporte: ");
 		builder.append(this.importe);
+		builder.append(" €");
 
 		return builder.toString();
 	}

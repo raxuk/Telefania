@@ -41,17 +41,18 @@ public class PestanyaClientes extends JPanel { // NUEVO
 		this.modelo = modelo;
 		anyadirCliente = new AnyadirCliente(modelo, controlador);
 		clienteMostrar = new MostrarInfoCliente(modelo, controlador);
+		setLayout(new BorderLayout());
 
 		// ClienteCrear //TODO gridbadlayout
 		JPanel jpAnyadirCliente = new JPanel();
 		jpAnyadirCliente.add(anyadirCliente);
-		add(jpAnyadirCliente);
+		add(jpAnyadirCliente, BorderLayout.WEST);
 
 		// ClienteLista
 		tablaClientes = new JTable();
 		actualizarTablaClientes();
 		JScrollPane scroll = new JScrollPane(tablaClientes);
-		add(scroll);
+		add(scroll, BorderLayout.CENTER);
 
 		// ClienteMostrar
 		JPanel jpInfoCliente = new JPanel(new BorderLayout());
@@ -69,7 +70,7 @@ public class PestanyaClientes extends JPanel { // NUEVO
 		
 		jpInfoCliente.add(buscarCliente, BorderLayout.NORTH);
 		
-		add(jpInfoCliente);
+		add(jpInfoCliente, BorderLayout.EAST);
 
 		
 		//action

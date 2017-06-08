@@ -1,6 +1,5 @@
 package mvc.vista;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
@@ -54,8 +53,6 @@ public class ImplementacionVista implements InterrogaVista, InformaVista {
 	public void GUI() {
 		pestanyas = new JTabbedPane();
 		pestanyas.addTab("Clientes", clientesPestanya);
-		clientesPestanya.setLayout(new BoxLayout(clientesPestanya, BoxLayout.X_AXIS));
-
 		pestanyas.addTab("Facturas", facturasPestanya);
 		pestanyas.addTab("Llamadas", llamadasPestanya);
 		//
