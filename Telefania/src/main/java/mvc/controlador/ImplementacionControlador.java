@@ -43,14 +43,14 @@ public class ImplementacionControlador implements Controlador {
 		int tarifaTipo = vista.tipoTarifa();
 
 		if (tarifaTipo == 1) {
-			tarifa = new TarifaPorDia(tarifa, DayOfWeek.SUNDAY); // TODO sel
+			tarifa = new TarifaPorDia(tarifa, DayOfWeek.SUNDAY); // 
 		}
 		if (tarifaTipo == 2) {
-			tarifa = new TarifaPorHoras(tarifa, 16, 20); // TODO sel
+			tarifa = new TarifaPorHoras(tarifa, 16, 20); // 
 		}
 		if (tarifaTipo == 3) {
-			tarifa = new TarifaPorDia(tarifa, DayOfWeek.SUNDAY); // TODO sel
-			tarifa = new TarifaPorHoras(tarifa, 16, 20); // TODO sel
+			tarifa = new TarifaPorDia(tarifa, DayOfWeek.SUNDAY); // 
+			tarifa = new TarifaPorHoras(tarifa, 16, 20); // 
 		}
 
 		if (tipoCliente.equals("empresa")) {
@@ -66,14 +66,14 @@ public class ImplementacionControlador implements Controlador {
 	public void cambiarTarifa(String nif, int tarifaTipo) {
 		Tarifa tarifa = new TarifaBasica(0.15);
 		if (tarifaTipo == 1) {
-			tarifa = new TarifaPorDia(tarifa, DayOfWeek.SUNDAY); // TODO sel
+			tarifa = new TarifaPorDia(tarifa, DayOfWeek.SUNDAY); // 
 		}
 		if (tarifaTipo == 2) {
-			tarifa = new TarifaPorHoras(tarifa, 16, 20); // TODO sel
+			tarifa = new TarifaPorHoras(tarifa, 16, 20); // 
 		}
 		if (tarifaTipo == 3) {
-			tarifa = new TarifaPorDia(tarifa, DayOfWeek.SUNDAY); // TODO sel
-			tarifa = new TarifaPorHoras(tarifa, 16, 20); // TODO sel
+			tarifa = new TarifaPorDia(tarifa, DayOfWeek.SUNDAY); // 
+			tarifa = new TarifaPorHoras(tarifa, 16, 20); // 
 		}
 		modelo.cambiarTarifa(nif, tarifa);
 	}

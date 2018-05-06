@@ -43,7 +43,7 @@ public class PestanyaClientes extends JPanel { // NUEVO
 		clienteMostrar = new MostrarInfoCliente(modelo, controlador);
 		setLayout(new BorderLayout());
 
-		// ClienteCrear //TODO gridbadlayout
+		// ClienteCrear //
 		JPanel jpAnyadirCliente = new JPanel();
 		jpAnyadirCliente.add(anyadirCliente);
 		add(jpAnyadirCliente, BorderLayout.WEST);
